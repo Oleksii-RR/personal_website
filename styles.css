@@ -1,0 +1,347 @@
+:root {
+    --color-primary: oklch(0.76 0.1 264);
+    --color-secondary: oklch(0.96 0.05 264);
+    --color-muted: oklch(0.76 0.05 264);
+
+
+    --bg-light: oklch(0.2 0.025 264);
+    --bg: oklch(0.15 0.025 264);
+    --bg-dark: oklch(0.1 0.025 264);
+
+    --border-light: oklch(0.5 0.05 264);
+    --border: oklch(0.4 0.05 264);
+    --border-dark: oklch(0.3 0.05 264);
+
+    --border-style: 2px solid var(--border-dark);
+    --border-top-style: 2px solid var(--border-light);
+    --border-bottom-style: 2px solid var(--border-dark);
+
+    --shadow: 0 0 20px 10px rgba(0, 0, 0, 0.12);
+
+    --radius: 0.375rem;
+    --transition: 0.3s ease;
+}
+
+
+[data-theme="light"] {
+    --color-primary: oklch(0.4 0.1 264);
+    --color-secondary: oklch(0.15 0.05 264);
+    --color-muted: oklch(0.7 0.05 264);
+
+    --bg-light: oklch(1 0.025 264);
+    --bg: oklch(0.96 0.025 264);
+    --bg-dark: oklch(0.92 0.025 264);
+
+    --border-light: oklch(1 0.05 264);
+    --border: oklch(0.6 0.05 264);
+    --border-dark: oklch(0.7 0.05 264);
+    --border-style: 2px solid var(--border-dark);
+    --border-top-style: 2px solid var(--border-light);
+    --border-bottom-style: 2px solid var(--border-dark);
+
+    --shadow: 0 0 20px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* ====== Загальні зміни ====== */
+body {
+    color: var(--color-secondary);
+    background-color: var(--bg-dark);
+}
+
+h1 {
+    color: var(--color-primary);
+}
+
+.text-primary,
+.icon {
+    color: var(--color-primary) !important;
+}
+
+.text-muted {
+    color: var(--color-muted) !important;
+}
+
+/* ====== Навбар ====== */
+.navbar {
+    color: var(--color-muted);
+    font-weight: 600;
+
+    background-color: var(--bg);
+
+    border: 1px solid var(--border-dark);
+    border-top: 1px solid var(--border-light);
+}
+
+.navbar-brand {
+    color: var(--color-muted);
+    transition: var(--transition);
+}
+
+.navbar-brand span {
+    color: var(--color-secondary);
+}
+
+.navbar-brand:hover {
+    color: var(--color-primary);
+    transform: scale(1.1);
+}
+
+.navbar-toggler {
+    color: var(--color-primary);
+
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+
+    transition: var(--transition);
+}
+
+.navbar-toggler:hover {
+    background-color: var(--color-primary);
+    color: var(--bg-dark);
+}
+
+.navbar-toggler-icon {
+    filter: brightness(0) saturate(100%) invert(78%);
+}
+
+.nav-link {
+    position: relative;
+
+    display: inline-flex;
+    width: fit-content;
+
+    color: var(--color-muted);
+
+    transition: color var(--transition);
+}
+
+.nav-link-custom::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 3px;
+
+    opacity: 0;
+
+    background-color: var(--color-primary);
+
+    transition: opacity var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--color-primary);
+}
+
+.nav-link:hover::after {
+    opacity: 1;
+}
+
+/* ====== Картка ====== */
+.card {
+    overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+
+    background:
+        linear-gradient(var(--bg), var(--bg)) padding-box,
+        linear-gradient(to bottom,
+            var(--border-light),
+            var(--border),
+            var(--border-dark)) border-box;
+
+
+    box-shadow: var(--shadow);
+}
+
+/* ====== Кнопки ====== */
+.socials-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 50px;
+    height: 50px;
+
+    color: var(--color-primary);
+
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+
+    transition: var(--transition);
+}
+
+.socials-btn:hover {
+    color: var(--color-secondary);
+
+    background-color: var(--color-primary);
+
+    transform: scale(1.1) translateY(-5px);
+
+    box-shadow: 0 0 15px var(--color-primary);
+}
+
+/* ====== Таблиця ====== */
+.table-responsive-lg {
+    background-color: var(--bg);
+
+    border: var(--border-style);
+    border-top: var(--border-top-style);
+    border-radius: var(--radius);
+}
+
+.table th {
+    color: var(--color-primary);
+
+    background-color: var(--bg-light);
+
+    border-bottom: none;
+
+    transition: var(--transition);
+}
+
+.table thead tr:hover th {
+    color: var(--color-secondary);
+    background-color: var(--color-primary);
+}
+
+.table td {
+    color: var(--color-muted);
+    border: none;
+}
+
+.table tbody tr {
+    transition: var(--transition);
+}
+
+.table tbody tr:hover * {
+    color: var(--color-primary);
+    background-color: var(--bg-light);
+}
+
+/* ====== Секція з улюбленим ====== */
+.movie-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.movie-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    display: block;
+    transition: transform var(--transition);
+}
+
+.movie-card:hover img {
+    transform: scale(1.08);
+}
+
+.movie-overlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    opacity: 0;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    transition: opacity var(--transition);
+}
+
+.movie-card:hover .movie-overlay {
+    opacity: 1;
+}
+
+.search-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+
+    font-size: 50px;
+    color: var(--color-secondary);
+}
+
+.movie-title {
+    color: var(--color-muted);
+    text-align: center;
+}
+
+/* ====== Слайд-шоу ====== */
+.carousel {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+
+    box-shadow: var(--shadow);
+}
+
+.carousel-item {
+    height: 500px;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border: var(--border-style);
+    border-top: var(--border-top-style);
+    border-radius: var(--radius);
+}
+
+/* ====== 3D Вікно ====== */
+model-viewer {
+    height: 80vh;
+    padding: 0;
+
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+
+    background:
+        linear-gradient(var(--bg), var(--bg)) padding-box,
+        linear-gradient(to bottom,
+            var(--border-light),
+            var(--border),
+            var(--border-dark)) border-box;
+
+
+    box-shadow: var(--shadow);
+}
+
+/* ====== Перемикач тем ====== */
+.theme-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 35px;
+    height: 35px;
+
+    color: var(--color-primary);
+
+    background: transparent;
+
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    color: var(--color-secondary);
+
+    background-color: var(--color-primary);
+
+    transform: rotate(180deg);
+    box-shadow: 0 0 15px var(--color-primary);
+}
